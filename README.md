@@ -1,0 +1,1 @@
+# ROCm-test-rodinia
