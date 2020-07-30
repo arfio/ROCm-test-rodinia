@@ -1,0 +1,11 @@
+Reading File
+Read File
+Copied Everything to GPU memory
+Start traversing the tree
+Kernel Executed 8 times
+Result stored in result.txt
+time CPU to GPU memory copy = 0.264742s
+time GPU to CPU memory copy back = 0.000038s
+time GPU malloc = 0.021085s
+time kernel = 0.001558s
+Overall CPU time = 0.291273s

@@ -1,0 +1,7 @@
+thread block size of kernel = 128 
+Configuration used: boxes1d = 5
+time CPU to GPU memory copy = 0.001016s
+time GPU to CPU memory copy back = 0.018670s
+time GPU malloc = 0.000011s
+time kernel = 0.000363s
+Overall CPU time = 0.301415s

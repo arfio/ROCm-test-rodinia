@@ -1,0 +1,40 @@
+Using device 0: Vega 10 XT [Radeon RX Vega 64]
+Source file:		rgb.bmp
+ Dimensions:		1024x1024
+ Components count:	3
+ Bit depth:		8
+ DWT levels:		3
+ Forward transform:	1
+ 9/7 transform:		0
+Loading ipnput: ../../data/dwt2d/rgb.bmp
+precteno 3145728, inputsize 3145728
+
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 9 , gx = 6 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 5 , gx = 4 , gy = 13 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 3 , gx = 4 , gy = 11 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 9 , gx = 6 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 5 , gx = 4 , gy = 13 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 3 , gx = 4 , gy = 11 
+fdwt53Kernel in launchFDWT53Kernel has finished
+*** 3 stages of 2D forward DWT:
+
+ sliding steps = 9 , gx = 6 , gy = 15 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 5 , gx = 4 , gy = 13 
+fdwt53Kernel in launchFDWT53Kernel has finished
+ sliding steps = 3 , gx = 4 , gy = 11 
+fdwt53Kernel in launchFDWT53Kernel has finished
+Writing to rgb.bmp.dwt.r (1024 x 1024)
+
+Writing to rgb.bmp.dwt.g (1024 x 1024)
+
+Writing to rgb.bmp.dwt.b (1024 x 1024)
