@@ -33,8 +33,8 @@ def plot_data(df, experiment_name):
     plt.show()
 
 
-kernel_stats = pd.read_csv("kernel_statistics.csv", delimiter=',')
-runtime_stats = pd.read_csv("result_runtime.csv")
+kernel_stats = pd.read_csv("./rodinia_3.0/kernel_statistics.csv", delimiter=',')
+runtime_stats = pd.read_csv("./rodinia_3.0/result_runtime.csv")
 
 kernel_stats["DurationNs"] = kernel_stats["DurationNs"] / kernel_stats["NKernels"]
 kernel_stats["L2CacheHit"] = kernel_stats["L2CacheHit"] / kernel_stats["NKernels"]

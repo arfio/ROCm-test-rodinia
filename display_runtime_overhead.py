@@ -13,7 +13,7 @@ def calc(x):
 
 def get_data_from_csv():
     labels, tracing, profiling, tracing_profiling = [], [], [], []
-    with open("result_runtime.csv", "r") as csv_file:
+    with open("./rodinia_3.0/result_runtime.csv", "r") as csv_file:
         reader = csv.DictReader(csv_file)
         for line in reader:
             labels.append(line["Experience"])
