@@ -3,8 +3,8 @@
 1997 11 14 12 24 HELENE     30.5  89.8  134  529 --> Distance=0.538515
 2003  8 27 12 10 TONY       29.9  89.4  160  286 --> Distance=0.608275
 1974 12 22 18 24 JOYCE      30.6  89.9   80  593 --> Distance=0.608276
-time CPU to GPU memory copy = 0.000160s
-time GPU to CPU memory copy back = 0.000171s
-time GPU malloc = 0.000025s
-time kernel = 0.000413s
-Overall CPU time = 0.325930s
+time CPU to GPU memory copy = 0.000531s
+time GPU to CPU memory copy back = 0.000579s
+time GPU malloc = 0.000019s
+time kernel = 0.000410s
+Overall CPU time = 0.243192s

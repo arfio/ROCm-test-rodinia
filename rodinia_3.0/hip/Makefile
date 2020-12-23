@@ -9,7 +9,7 @@ endif
 ifeq ($(HIP_PLATFORM),nvcc)
 BLACKLIST=hybridsort leukocyte 
 else
-BLACKLIST=leukocyte particlefilter myocyte hotspot
+BLACKLIST=leukocyte myocyte
 endif
 TESTS=$(filter-out $(BLACKLIST),$(subst /,,$(wildcard */)))
 VERBOSE?=0

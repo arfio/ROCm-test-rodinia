@@ -1,8 +1,8 @@
 WG size of kernel 1 = 512, WG size of kernel 2= 4 X 4
 Read file from ../../data/gaussian/matrix208.txt 
-time CPU to GPU memory copy = 0.263181s
-time GPU to CPU memory copy back = 0.000172s
-time GPU malloc = 0.020330s
-time kernel = 0.017323s
-Overall CPU time = 0.376714s
+time CPU to GPU memory copy = 0.230992s
+time GPU to CPU memory copy back = 0.000602s
+time GPU malloc = 0.010274s
+time kernel = 0.012485s
+Overall CPU time = 0.262189s
 Test Pass

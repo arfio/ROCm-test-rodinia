@@ -2,4 +2,5 @@
 # passed in two files to compare.
 #diff $1 $2
 #diff `dirname $0`/gold/run0.gold run0.out
-../../common/numdiff -q -a 1e-3 `dirname $0`/gold/run0.gold run0.out
+set -x
+../../common/numdiff -V -q -a 1e-3 `dirname $0`/gold/run0.gold run0.out

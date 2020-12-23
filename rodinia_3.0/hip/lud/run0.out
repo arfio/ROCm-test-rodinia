@@ -2,11 +2,11 @@ WG size of kernel = 16 X 16
 Generate input matrix internally, size =256
 Creating matrix internally size=256
 Before LUD
-Time consumed(ms): 267.116000
-time CPU to GPU memory copy = 0.265080s
-time GPU to CPU memory copy back = 0.001382s
-time GPU malloc = 0.021227s
-time kernel = 0.000607s
-Overall CPU time = 0.288634s
+Time consumed(ms): 227.956000
+time CPU to GPU memory copy = 0.225545s
+time GPU to CPU memory copy back = 0.001781s
+time GPU malloc = 0.010119s
+time kernel = 0.000586s
+Overall CPU time = 0.238307s
 After LUD
 >>>Verify<<<<

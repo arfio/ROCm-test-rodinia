@@ -1,6 +1,8 @@
 import csv
 import json
 import os
+import sys
+from datetime import datetime
 
 perf_counters = {
     "Wavefronts": 0,
@@ -30,12 +32,20 @@ def get_event_count(trace_filename):
     with open(trace_filename) as trace_file:
         return len(json.load(trace_file)["traceEvents"])
 
+def get_trace_size(trace_folder):
+    return sum(os.path.getsize(os.path.join(trace_folder, f)) for f in os.listdir("./{}".format(trace_folder)))
+
 
 filename_stats = "pc_config.csv"
 trace_filename = "pc_config.json"
 kernel_stats = "../../kernel_statistics.csv"
 performance_counters = read_source_csv(filename_stats)
 performance_counters["NEvents"] = get_event_count(trace_filename)
+
+rocm_trace_folder = "results"
+lttng_trace_folder = "rocprof"
+
+performance_counters["TraceSize"] = get_trace_size(rocm_trace_folder) + get_trace_size(lttng_trace_folder)
 
 experience_name = os.path.basename(os.getcwd())
 performance_counters["Experience"] = experience_name
