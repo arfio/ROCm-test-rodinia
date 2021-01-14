@@ -5,7 +5,7 @@ from os import path
 from math import sqrt
 
 programs = ["nw","gaussian","b+tree","hybridsort","backprop","streamcluster","kmeans","nn","heartwall","dwt2d","lud","pathfinder","srad","bfs","lavaMD","cfd","particlefilter","hotspot"]
-files = ["perf_control.txt","perf_profiling.txt","perf_tracing.txt","perf_tracing_profiling.txt"]
+files = ["perf_control.txt","perf_profiling.txt","perf_tracing.txt","perf_tracing_profiling.txt", "perf_lttng.txt"]
 
 stat_regex = re.compile("real\t(\d+m\d+[.]\d+)s\nuser\t(\d+m\d+[.]\d+)s\nsys\t(\d+m\d+[.]\d+)s")
 result_filename = "result_statistics.json"
@@ -38,7 +38,7 @@ def calculate_average(statistics):
     return average_statistics
 
 def overhead_rate(indirect, baseline):
-    return round(((indirect / baseline) - 1) * 100, 2)
+    return round(((indirect / baseline) - 1) * 100, 3)
 
 def calculate_overhead(average_statistics):
     overhead = {}
@@ -48,12 +48,14 @@ def calculate_overhead(average_statistics):
         overhead[program]["profiling"] = overhead_rate(average_statistics[program]["profiling"]["real"], baseline)
         overhead[program]["tracing"] = overhead_rate(average_statistics[program]["tracing"]["real"], baseline)
         overhead[program]["tracing_profiling"] = overhead_rate(average_statistics[program]["tracing_profiling"]["real"], baseline)
+        overhead[program]["lttng"] = overhead_rate(average_statistics[program]["lttng"]["real"], baseline)
 
     n_prog = len(programs)
     overall = {}
     overall["profiling"] = sum([x["profiling"] for x in overhead.values()]) / n_prog
     overall["tracing"] = sum([x["tracing"] for x in overhead.values()]) / n_prog
     overall["tracing_profiling"] = sum([x["tracing_profiling"] for x in overhead.values()]) / n_prog
+    overall["lttng"] = sum([x["lttng"] for x in overhead.values()]) / n_prog
     overhead["overall"] = overall
     return overhead
 
@@ -68,8 +70,11 @@ def save_to_csv(stats, overhead):
         "Profiling std",
         "Tracing and profiling (s)",
         "Tracing and profiling std",
+        "LTTng (s)",
+        "LTTng std",
         "Overhead w/ tracing (%)",
         "Overhead w/ profiling (%)",
+        "Overhead w/ LTTng (%)",
         "Overhead w/ both (%)"
     ]
     with open(result_csv, "w") as csv_file:
@@ -86,8 +91,11 @@ def save_to_csv(stats, overhead):
                 "Profiling std": stats[experience]["profiling"]["real_std"],
                 "Tracing and profiling (s)": stats[experience]["tracing_profiling"]["real"],
                 "Tracing and profiling std": stats[experience]["tracing_profiling"]["real_std"],
+                "LTTng (s)": stats[experience]["lttng"]["real"],
+                "LTTng std": stats[experience]["lttng"]["real_std"],
                 "Overhead w/ tracing (%)": overhead[experience]["tracing"],
                 "Overhead w/ profiling (%)": overhead[experience]["profiling"],
+                "Overhead w/ LTTng (%)": overhead[experience]["lttng"],
                 "Overhead w/ both (%)": overhead[experience]["tracing_profiling"]
             })
 

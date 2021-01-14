@@ -7,6 +7,7 @@ lttng="lttng"
 perf_control_file="perf_control.txt"
 perf_profiling_file="perf_profiling.txt"
 perf_tracing_file="perf_tracing.txt"
+perf_lttng_file="perf_lttng.txt"
 perf_tracing_profiling_file="perf_tracing_profiling.txt"
 files=($perf_control_file $perf_profiling_file $perf_tracing_file $perf_tracing_profiling_file)
 
@@ -49,6 +50,16 @@ function run_tracing_profiling() {
 	python3 ../../collect_counters.py
 }
 
+function run_lttng() {
+	echo "Running only lttng..."
+	$lttng create rocprof --output=./rocprof > /dev/null
+	$lttng enable-channel k -k --subbuf-size 2048K --num-subbuf 8 > /dev/null
+	$lttng enable-event $lttng_params > /dev/null
+	$lttng start > /dev/null
+	(time $exec) &>> $perf_lttng_file
+	$lttng destroy > /dev/null
+}
+
 # MAIN
 rm "kernel_statistics.csv"
 cd "hip/nw"
@@ -66,4 +77,5 @@ for program in "${programs[@]}"; do
 	for ((i=0;i<n_execution;i++)); do run_profiling; done
 	for ((i=0;i<n_execution;i++)); do run_tracing; done
 	for ((i=0;i<n_execution;i++)); do run_tracing_profiling; done
+	for ((i=0;i<n_execution;i++)); do run_lttng; done
 done
